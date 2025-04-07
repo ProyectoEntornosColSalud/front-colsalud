@@ -7,29 +7,46 @@ document.getElementById("form_login").addEventListener("submit", function(event)
     const password = document.getElementById("password").value;
 
     request = {
-        "doc_numer": documentNumber,
+        "username": documentNumber,
         "password": password
     }
 
+    loginUser(request)
+   
 
-    const response = fetch('http://localhost:8080/api/auth/login', {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify(request)
-    });
-
-    if (!response.ok) {
-
-        if(response.status == 401) {
-            invalidaCredentialMessage.innerText = "invalid credentials"
-        }
-        throw new Error(`Response status: ${response.status}`);
-      }
-
-    window.location.href = "http://127.0.0.1:5500/colsalud/pages/home/home.html";
 });
+
+async function loginUser(request) {
+    try {
+        
+        const response = await fetch('http://localhost:8080/api/auth/login', {
+            method: "POST",
+            credentials: "include",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(request)
+        });
+
+        
+
+        if (!response.ok) { 
+            if (response.status === 401) {
+                invalidaCredentialMessage.innerText = "Invalid credentials";
+            }
+            console.log({ response }, "error");
+            throw new Error(`Response status: ${response.status}`);
+        }
+
+        console.log({response});
+
+    
+        //window.location.href = "http://127.0.0.1:5500/pages/home/home.html";
+
+    } catch (error) {
+        console.error("Error en la petición:", error.message);
+    }
+}
 
 document.getElementById("toggle_password").addEventListener("click", function() {
     const passwordInput = document.getElementById("password");
