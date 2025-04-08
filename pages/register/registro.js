@@ -1,6 +1,6 @@
 const errorRegisterMessage = document.getElementById("error_register_message")
 
-document.getElementById("form_register").addEventListener("submit", function(event) {
+document.getElementById("form_register").addEventListener("submit", async function(event) {
     event.preventDefault();
     
     // Obtener los datos del formulario
@@ -32,22 +32,30 @@ document.getElementById("form_register").addEventListener("submit", function(eve
     
 
     // Simular una acción con los datos (ejemplo: enviarlos por AJAX)
-    console.log(request);
     if (password !== passwordConfirm) {
         errorRegisterMessage.textContent = "las contraseñas no coinciden"
         return
     }
 
-    fetch('http://localhost:8080/api/auth/register', {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify(request)
-    });
-
-    //window.location.href = "http://127.0.0.1:5500/colsalud/pages/home/home.html";
+    try {
+        const response = await fetch('http://localhost:8080/api/auth/register', {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(request)
+        });
+        
+        if (response.ok) {
+            // Redireccionar si todo salió bien
+            window.location.href = "http://127.0.0.1:5500/pages/login/login.html";
+        }
+    } catch (error) {
+        console.error("Error al conectar con el backend:", error);
+        errorRegisterMessage.textContent = "No se pudo conectar con el servidor.";
+    }
 });
+
 
 
 document.getElementById("toggle_password").addEventListener("click", function() {

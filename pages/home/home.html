@@ -10,11 +10,88 @@
 <body>
     <header class="bg-primary text-white py-3 shadow-sm">
         <div class="container d-flex align-items-center">
-            <p class="bi bi-person-circle fs-3 me-2">COLSALUD home</p>
+            <p class="bi bi-person-circle fs-3 me-2">COLSALUD</p>
         </div>
     </header>
+
+    <main>
+        <section class="mt-5 container text-center">
+            <input id="btn_agendar" type="button" value="Agendar" class="btn btn-primary me-3 px-4 py-2 shadow-sm">
+            <input id="btn_gestionar" type="button" value="Gestionar" class="btn btn-secondary px-4 py-2 shadow-sm">
+        </section>
+
+        <section class="container bg-light p-4 mt-5">
+
+            <!-- Filtros -->
+            <div class="mb-3">
+              <label for="filtro_especialidad" class="form-label">Especialidad</label>
+              <select name="filtro_especialidad" id="filtro_especialidad" class="form-select">
+                <option value="" selected disabled>Selecciona una especialidad</option>
+              </select>
+            </div>
+        
+            <div class="row g-3">
+              <div class="col-md-4">
+                <label for="filtro_dia" class="form-label">Día</label>
+                <input type="date" id="filtro_dia" name="filtro_dia" class="form-control">
+              </div>
+              <div class="col-md-4">
+                <label for="filtro_hora_inicio" class="form-label">Hora inicio</label>
+                <input type="time" id="filtro_hora_inicio" name="filtro_hora_inicio" class="form-control">
+              </div>
+              <div class="col-md-4">
+                <label for="filtro_hora_fin" class="form-label">Hora fin</label>
+                <input type="time" id="filtro_hora_fin" name="filtro_hora_fin" class="form-control">
+              </div>
+            </div>
+        
+        
+            <hr class="my-4">
+        
+        
+            <div class="row">
+              <div class="col-md-4">
+                <h5>👨‍⚕️ Doctores disponibles</h5>
+                <ul class="list-group">
+                  <li class="list-group-item d-flex align-items-center">
+                    <i class="fas fa-user-md text-primary me-2"></i> Doctor 1
+                  </li>
+                  <li class="list-group-item d-flex align-items-center">
+                    <i class="fas fa-user-md text-primary me-2"></i> Doctor 2
+                  </li>
+                  <li class="list-group-item d-flex align-items-center">
+                    <i class="fas fa-user-md text-primary me-2"></i> Doctor 3
+                  </li>
+                  <li class="list-group-item d-flex align-items-center">
+                    <i class="fas fa-user-md text-primary me-2"></i> Doctor 4
+                  </li>
+                </ul>
+              </div>
+          
+          
+              <div class="col-md-8">
+                <h5>📅 Turnos libres</h5>
+                <ul class="list-group">
+                  <li class="list-group-item d-flex align-items-center">
+                    <i class="fas fa-calendar-alt text-success me-2"></i> Día: 12/12/2024 - Hora: 02:00 PM
+                  </li>
+                  <li class="list-group-item d-flex align-items-center">
+                    <i class="fas fa-calendar-alt text-success me-2"></i> Día: 12/12/2024 - Hora: 02:00 PM
+                  </li>
+                  <li class="list-group-item d-flex align-items-center">
+                    <i class="fas fa-calendar-alt text-success me-2"></i> Día: 12/12/2024 - Hora: 02:00 PM
+                  </li>
+                  <li class="list-group-item d-flex align-items-center">
+                    <i class="fas fa-calendar-alt text-success me-2"></i> Día: 12/12/2024 - Hora: 02:00 PM
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+        </section>
     
     </main>
+
     <script src="./home.js"></script>
 </body>
 </html>
